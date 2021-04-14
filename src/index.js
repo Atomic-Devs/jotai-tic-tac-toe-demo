@@ -90,7 +90,7 @@ function End() {
         <Confetti
           width={width}
           height={height}
-          colors={[gameWinner === "X" ? "#d76050" : "#509ed7", "white"]}
+          colors={[gameWinner === "X" ? "#464646" : "#1cb5c9", "white"]}
         />
       </>
     )
@@ -103,13 +103,13 @@ function App() {
       <AtomicDebugger>
         <div className="game">
           <h1>
-            x
+           <span style={{color:"#464646", textShadow: "0.25rem 0.25rem 0.75rem rgba(139, 139, 139, 0.75)"}}>x</span>
         <span>o</span>
         x
         <span>o</span>
           </h1>
           <Status />
-          <div className="board">
+          <div className="board" >
             <Squares />
           </div>
         </div>
