@@ -1,20 +1,19 @@
 {
   "files": {
     "main.css": "/jotai-tic-tac-toe-demo/static/css/main.d182cb9a.chunk.css",
-    "main.js": "/jotai-tic-tac-toe-demo/static/js/main.51f7de1a.chunk.js",
-    "main.js.map": "/jotai-tic-tac-toe-demo/static/js/main.51f7de1a.chunk.js.map",
-    "runtime-main.js": "/jotai-tic-tac-toe-demo/static/js/runtime-main.89138cde.js",
-    "runtime-main.js.map": "/jotai-tic-tac-toe-demo/static/js/runtime-main.89138cde.js.map",
-    "static/js/2.9d355e89.chunk.js": "/jotai-tic-tac-toe-demo/static/js/2.9d355e89.chunk.js",
-    "static/js/2.9d355e89.chunk.js.map": "/jotai-tic-tac-toe-demo/static/js/2.9d355e89.chunk.js.map",
-    "index.html": "/jotai-tic-tac-toe-demo/index.html",
-    "static/css/main.d182cb9a.chunk.css.map": "/jotai-tic-tac-toe-demo/static/css/main.d182cb9a.chunk.css.map",
-    "static/js/2.9d355e89.chunk.js.LICENSE.txt": "/jotai-tic-tac-toe-demo/static/js/2.9d355e89.chunk.js.LICENSE.txt"
+    "main.js": "/jotai-tic-tac-toe-demo/static/js/main.f16f14e8.chunk.js",
+    "main.css.map": "/jotai-tic-tac-toe-demo/static/css/main.d182cb9a.chunk.css.map",
+    "main.js.map": "/jotai-tic-tac-toe-demo/static/js/main.f16f14e8.chunk.js.map",
+    "runtime-main.js": "/jotai-tic-tac-toe-demo/static/js/runtime-main.0c7472b0.js",
+    "runtime-main.js.map": "/jotai-tic-tac-toe-demo/static/js/runtime-main.0c7472b0.js.map",
+    "vendors~main.js": "/jotai-tic-tac-toe-demo/static/js/vendors~main.3966ea1c.chunk.js",
+    "vendors~main.js.map": "/jotai-tic-tac-toe-demo/static/js/vendors~main.3966ea1c.chunk.js.map",
+    "index.html": "/jotai-tic-tac-toe-demo/index.html"
   },
   "entrypoints": [
-    "static/js/runtime-main.89138cde.js",
-    "static/js/2.9d355e89.chunk.js",
+    "static/js/runtime-main.0c7472b0.js",
+    "static/js/vendors~main.3966ea1c.chunk.js",
     "static/css/main.d182cb9a.chunk.css",
-    "static/js/main.51f7de1a.chunk.js"
+    "static/js/main.f16f14e8.chunk.js"
   ]
 }
