@@ -92,7 +92,7 @@ button:focus {
   padding: 0;
   text-align: center;
   width: 5rem;
-  border: none;
+  border: 1px solid rgba(139, 139, 139, 0.75);
   background: #efefef;
   color: #464646;
   border-radius: 0.40rem;

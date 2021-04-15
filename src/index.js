@@ -105,7 +105,7 @@ function App() {
           <h1>
            <span style={{color:"#464646", textShadow: "0.25rem 0.25rem 0.75rem rgba(139, 139, 139, 0.75)"}}>x</span>
         <span>o</span>
-        x
+        <span style={{color:"#464646", textShadow: "0.25rem 0.25rem 0.75rem rgba(139, 139, 139, 0.75)"}}>x</span>
         <span>o</span>
           </h1>
           <Status />
