@@ -8,15 +8,15 @@ import { useAtomicDevtool, AtomicDebugger } from "atomic-devtools";
 const lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]] // prettier-ignore
 
 const squaresAtom = atom(Array(9).fill(null));
-squaresAtom.debugLabel = "squaresAtom"
+squaresAtom.debugLabel = "squaresAtom";
 
 const nextValueAtom = atom((get) =>
   get(squaresAtom).filter((r) => r === "O").length ===
-    get(squaresAtom).filter((r) => r === "X").length
+  get(squaresAtom).filter((r) => r === "X").length
     ? "X"
     : "O"
 );
-nextValueAtom.debugLabel = "nextValueAtom"
+nextValueAtom.debugLabel = "nextValueAtom";
 
 const winnerAtom = atom((get) => {
   for (let i = 0; i < lines.length; i++) {
@@ -52,17 +52,23 @@ const statusAtom = atom((get) => {
   return get(winnerAtom)
     ? `Winner: ${get(winnerAtom)}`
     : get(squaresAtom).every(Boolean)
-      ? `Scratch`
-      : `Next player: ${get(nextValueAtom)}`;
+    ? `Scratch`
+    : `Next player: ${get(nextValueAtom)}`;
 });
 
-
 function Squares({ i }) {
-  const [squares, selectSquare] = useAtomicDevtool(selectSquareAtom, "selectSquareAtom");
+  const [squares, selectSquare] = useAtomicDevtool(
+    selectSquareAtom,
+    "selectSquareAtom"
+  );
   return (
     <>
       {squares.map((el, i) => (
-        <button key={i} className={`square ${el}`} onClick={() => selectSquare(i)}>
+        <button
+          key={i}
+          className={`square ${el}`}
+          onClick={() => selectSquare(i)}
+        >
           {el}
         </button>
       ))}
@@ -101,23 +107,43 @@ function App() {
   return (
     <Provider>
       <AtomicDebugger>
+        <div className="header">
+          <h2>Atomic Dev Tool Demo</h2>
+          <p>
+            Download Atomic Dev Tool in the Google Chrome web
+            store and try it out!{" "}
+          </p>
+        </div>
         <div className="game">
           <h1>
-           <span style={{color:"#464646", textShadow: "0.25rem 0.25rem 0.75rem rgba(139, 139, 139, 0.75)"}}>x</span>
-        <span>o</span>
-        <span style={{color:"#464646", textShadow: "0.25rem 0.25rem 0.75rem rgba(139, 139, 139, 0.75)"}}>x</span>
-        <span>o</span>
+            <span
+              style={{
+                color: "#464646",
+                textShadow: "0.25rem 0.25rem 0.75rem rgba(139, 139, 139, 0.75)",
+              }}
+            >
+              x
+            </span>
+            <span>o</span>
+            <span
+              style={{
+                color: "#464646",
+                textShadow: "0.25rem 0.25rem 0.75rem rgba(139, 139, 139, 0.75)",
+              }}
+            >
+              x
+            </span>
+            <span>o</span>
           </h1>
           <Status />
-          <div className="board" >
+          <div className="board">
             <Squares />
           </div>
         </div>
         <End />
       </AtomicDebugger>
-    </Provider>)
+    </Provider>
+  );
 }
 
-ReactDOM.render(<App />,
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"));
