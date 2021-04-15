@@ -6,7 +6,7 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "atomic-devtools": "^1.1.1",
+    "atomic-devtools": "^1.1.2",
     "jotai": "^0.16.0",
     "react": "17.0.1",
     "react-confetti": "6.0.0",
