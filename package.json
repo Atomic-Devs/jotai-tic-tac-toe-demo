@@ -1,11 +1,12 @@
 {
+  "homepage": "http://Atomic-Devs.github.io/jotai-tic-tac-toe-demo",
   "name": "jotai-tic-tac",
   "version": "1.0.0",
   "description": "This sandbox has been generated!",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "atomic-devtools": "^1.1.1",
+    "atomic-devtools": "^1.1.2",
     "jotai": "^0.16.0",
     "react": "17.0.1",
     "react-confetti": "6.0.0",
@@ -18,12 +19,17 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  }
 }
