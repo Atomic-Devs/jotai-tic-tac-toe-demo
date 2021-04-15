@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/jotai-tic-tac-toe-demo/static/css/main.d182cb9a.chunk.css",
-    "main.js": "/jotai-tic-tac-toe-demo/static/js/main.f16f14e8.chunk.js",
-    "main.css.map": "/jotai-tic-tac-toe-demo/static/css/main.d182cb9a.chunk.css.map",
-    "main.js.map": "/jotai-tic-tac-toe-demo/static/js/main.f16f14e8.chunk.js.map",
+    "main.css": "/jotai-tic-tac-toe-demo/static/css/main.75de0028.chunk.css",
+    "main.js": "/jotai-tic-tac-toe-demo/static/js/main.8b1afc50.chunk.js",
+    "main.css.map": "/jotai-tic-tac-toe-demo/static/css/main.75de0028.chunk.css.map",
+    "main.js.map": "/jotai-tic-tac-toe-demo/static/js/main.8b1afc50.chunk.js.map",
     "runtime-main.js": "/jotai-tic-tac-toe-demo/static/js/runtime-main.0c7472b0.js",
     "runtime-main.js.map": "/jotai-tic-tac-toe-demo/static/js/runtime-main.0c7472b0.js.map",
     "vendors~main.js": "/jotai-tic-tac-toe-demo/static/js/vendors~main.3966ea1c.chunk.js",
@@ -13,7 +13,7 @@
   "entrypoints": [
     "static/js/runtime-main.0c7472b0.js",
     "static/js/vendors~main.3966ea1c.chunk.js",
-    "static/css/main.d182cb9a.chunk.css",
-    "static/js/main.f16f14e8.chunk.js"
+    "static/css/main.75de0028.chunk.css",
+    "static/js/main.8b1afc50.chunk.js"
   ]
 }

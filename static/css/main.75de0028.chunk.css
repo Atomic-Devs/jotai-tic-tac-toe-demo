@@ -97,7 +97,7 @@ button:focus {
   padding: 0;
   text-align: center;
   width: 5rem;
-  border: none;
+  border: 1px solid rgba(139, 139, 139, 0.75);
   background: #efefef;
   color: #464646;
   border-radius: 0.40rem;
@@ -119,4 +119,4 @@ button:focus {
 }
 
 
-/*# sourceMappingURL=main.d182cb9a.chunk.css.map*/
+/*# sourceMappingURL=main.75de0028.chunk.css.map*/
