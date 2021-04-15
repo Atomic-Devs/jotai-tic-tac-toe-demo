@@ -10,6 +10,12 @@ body {
   font-size: min(calc(100vh / 35), calc(100vw / 35));
 }
 
+h2{
+  margin: 5px;
+  padding-top: 35px;
+  text-align: center;
+  color: "#464646"
+}
 body {
   font-family: sans-serif;
   display: -webkit-flex;
@@ -21,12 +27,21 @@ body {
   background: #e2e2e2;
 }
 
+p {
+  padding: 10px 15px;
+  padding-bottom: 25px;
+  margin: 10px;
+  font-size: 20px;
+  text-align: center;
+  color: "#464646"
+}
 h1 {
   font-family: sans-serif;
   font-size: 12rem;
   font-weight: bold;
   line-height: 10rem;
-  padding: 0;
+  padding: 20px;
+  padding-top: 50px;
   margin: 0;
   text-align: center;
   width: 100%;
@@ -52,11 +67,11 @@ button:focus {
 }
 
 .status {
-  width: 100%;
+  /* width: 100%; */
   display: grid;
   grid-template-columns: 1fr auto;
   grid-gap: 0.3rem;
-  padding: 0.5rem;
+  padding: 0px 125px
 }
 
 .status > button {
@@ -119,4 +134,4 @@ button:focus {
 }
 
 
-/*# sourceMappingURL=main.75de0028.chunk.css.map*/
+/*# sourceMappingURL=main.b197d3c0.chunk.css.map*/
