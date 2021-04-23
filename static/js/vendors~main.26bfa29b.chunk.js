@@ -1072,27 +1072,19 @@ var index_module = __webpack_require__(3);
 // eslint-disable-next-line react/prop-types
 
 
-var AtomStateContext = /*#__PURE__*/Object(react["createContext"])({});
-var AtomUpdateContext = /*#__PURE__*/Object(react["createContext"])('test');
+var AtomUpdateContext = /*#__PURE__*/Object(react["createContext"])(null);
+/**
+ * AtomicDebugger is a React context provider component which provides a state setter to useAtomicDevtools.
+ * useAtomicDevtools sends atoms to AtomicDebugger component which uses those atoms to retrieve atomState and dependancies from Jotai's Provider State.
+ */
 
 function AtomicDebugger(_ref) {
   var children = _ref.children;
-  //collect a store of fiber roots
-  //receive message from CS to TIME-TRAVEL
-  //?on TIME-TRAVEL, grab idex from store of fiber roots
-  //?invoke __ATOMIC_DEVTOOLS_EXTENSION__.onCommitFiberRoot with indexed fiber.
-  //?obj = {index: 0}
-  //?[obj1 = {index: 3}, obj2 = {index: 3}, obj3 = {index: 3}]
   Object(react["useEffect"])(function () {
     window.addEventListener('message', function (msg) {
       var _msg$data = msg.data,
           action = _msg$data.action,
-          payload = _msg$data.payload; //?update fiber here with index from JUMP messages and invoke reactDOM.render with new root from js storage here.
-      //? fiberRoot = rootStore[indexFromCS]
-      //? flag for time-travel
-      //? update state sent to devtool with previous state
-      //? conditionally invoke reactDom.render(<AtomUpdateContext.Provider value={setUsedAtoms}>{children}</AtomUpdateContext.Provider>, rootFromRootStore)
-
+          payload = _msg$data.payload;
       if (action === 'TEST_FROM_CS') console.log('RECEIVED MESSAGE FROM CONTEST-SCRIPTS ---> ', payload);
     });
   }, []); //Declaring state to build serializable atomState to send to devtool
@@ -1115,36 +1107,34 @@ function AtomicDebugger(_ref) {
   var jotaiProviderComponentStoreContext; //Skip first react render cycle.
 
   if (fiberRoot && fiberRoot.child) {
-    while (((_fiberRoot$elementTyp = fiberRoot.elementType) === null || _fiberRoot$elementTyp === void 0 ? void 0 : _fiberRoot$elementTyp.name) !== 'Provider') {
-      var _fiberRoot$elementTyp;
+    try {
+      while (((_fiberRoot$elementTyp = fiberRoot.elementType) === null || _fiberRoot$elementTyp === void 0 ? void 0 : _fiberRoot$elementTyp.name) !== 'Provider') {
+        var _fiberRoot$elementTyp;
 
-      fiberRoot = fiberRoot.child;
+        fiberRoot = fiberRoot.child;
+      }
+    } catch (error) {
+      console.warn("Atomic Devtools is dependant on implementation of Jotai's <Provider> Component. Providerless mode compatibility is UNSTABLE. Please implement Jotai's <Provider>", error);
+      return /*#__PURE__*/react_default.a.createElement(react_default.a.Fragment, null, children);
     }
 
-    console.log('IN ATOMIC DEBUGGER COMPONENT');
     jotaiProviderComponentStoreContext = fiberRoot.memoizedState.memoizedState.current; //TODO Make sure Jotai provider is there.
     //TODO figure out provider-less mode.
     //Store Jotai state from provider context.
 
-    var jotaiState = jotaiProviderComponentStoreContext[0]; // console.log('jotaiState ---> ', jotaiState);
-    //Get key Symbols for mutable source.
+    var jotaiState = jotaiProviderComponentStoreContext[0]; //Get key Symbols for mutable source.
 
-    var stateSymbolKeys = Object.getOwnPropertySymbols(jotaiState); // console.log('stateSymbolKeys ---> ', stateSymbolKeys);
-    //Get first symbol for Provider state in mutable source.
+    var stateSymbolKeys = Object.getOwnPropertySymbols(jotaiState); //Get first symbol for Provider state in mutable source.
 
-    var stateSymbol = stateSymbolKeys[0]; // console.log('stateSymbol ---> ', stateSymbol);
-    //Get state from mutable source.
+    var stateSymbol = stateSymbolKeys[0]; //Get state from mutable source.
 
-    var state = jotaiState[stateSymbol]; // console.log('state ---> ', state);
-    //Mutable source has keys 'a', which is atomStateMap and 'm', which is mountedMap.
+    var state = jotaiState[stateSymbol]; //Mutable source has keys 'a', which is atomStateMap and 'm', which is mountedMap.
     //https://github.com/pmndrs/jotai/blob/537d5b15ec3d7c0293db720c4007158fb32dec6f/src/core/vanilla.ts#L52-L58
     //Get atomStateMap from Provider state.
 
-    var atomStateMap = state.a; // console.log('atomStateMap ---> ', atomStateMap);
-    //Get mountedMap from Provider state.
+    var atomStateMap = state.a; //Get mountedMap from Provider state.
 
-    var mountedMap = state.m; // console.log('mountedMap ---> ', mountedMap);
-    //Declare a store for mounted states per atom.
+    var mountedMap = state.m; //Declare a store for mounted states per atom.
 
     var mountedStates = {}; //Create a serializable object of atom state to send to devtool.
 
@@ -1159,8 +1149,7 @@ function AtomicDebugger(_ref) {
 
       atomsToDevtool[label] = _objectSpread2({}, atomStateMap.get(atom));
       mountedStates[label] = _objectSpread2({}, mountedMap.get(atom));
-    } //
-
+    }
     /**
      * Recursively transverse readDependencies per atom atomsToDevtools and find missing atoms (declared outside of React Components).
      * Recursively transverse dependents in mountedStates to find missing atoms (declared outside of React components).
@@ -1262,26 +1251,36 @@ function AtomicDebugger(_ref) {
 
       setPreviousState(atomsToDevtoolString);
     }
-  } //? will reactDOM.render interfere with this return value? Will it update fiber before returning below? or return from the function.
-
+  }
 
   return /*#__PURE__*/react_default.a.createElement(AtomUpdateContext.Provider, {
     value: setUsedAtoms
   }, children);
 }
+/**
+ * useAtomicdevtool is a Jotai useAtom wrapper that sends the inspected atom to <AtomicDebugger> component and assigns a label for identification in the Devtool.
+ * @param {anyAtom[]} atom The atom to inspect in Atomic Devtools
+ * @param {string} label Otional: label will default to atom.toString() if no label is passed as an argument.
+ * @returns the invocation of useAtom(atom).
+ */
 
-function useAtomicDevtool(atom, label) {
+
+function useAtomicDevtool(atom) {
+  var label = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : atom.toString();
   //Use context provided by AtomicDebugger component to retrieve setAtomState().
   var setUsedAtoms = Object(react["useContext"])(AtomUpdateContext); //Update AtomicDebugger usedAtoms with a shallow copy of the atom used in application component.
 
-  setUsedAtoms(function (atomState) {
-    var copy = _objectSpread2({}, atomState);
+  if (setUsedAtoms) {
+    setUsedAtoms(function (atomState) {
+      var copy = _objectSpread2({}, atomState);
 
-    copy[label] = atom;
-    return _objectSpread2({}, copy); //?Why doesn't this retain value??
-    //atomState[label] = atom;
-    //return atomState
-  }); //Set debug label key for natural language reference (Jotai uses 'atom + incremented value' for labels internally)
+      copy[label] = atom;
+      return _objectSpread2({}, copy); //?Why doesn't this retain value??
+      // atomState[label] = atom;
+      // return atomState;
+    });
+  } //Set debug label key for natural language reference (Jotai uses 'atom + incremented value' for labels internally)
+
 
   atom.debugLabel = label; //for React Devtools...
 
@@ -11754,4 +11753,4 @@ module.exports = function equal(a, b) {
 
 /***/ })
 ]]);
-//# sourceMappingURL=vendors~main.3966ea1c.chunk.js.map
+//# sourceMappingURL=vendors~main.26bfa29b.chunk.js.map

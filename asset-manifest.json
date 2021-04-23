@@ -6,13 +6,13 @@
     "main.js.map": "/jotai-tic-tac-toe-demo/static/js/main.800a6e59.chunk.js.map",
     "runtime-main.js": "/jotai-tic-tac-toe-demo/static/js/runtime-main.0c7472b0.js",
     "runtime-main.js.map": "/jotai-tic-tac-toe-demo/static/js/runtime-main.0c7472b0.js.map",
-    "vendors~main.js": "/jotai-tic-tac-toe-demo/static/js/vendors~main.3966ea1c.chunk.js",
-    "vendors~main.js.map": "/jotai-tic-tac-toe-demo/static/js/vendors~main.3966ea1c.chunk.js.map",
+    "vendors~main.js": "/jotai-tic-tac-toe-demo/static/js/vendors~main.26bfa29b.chunk.js",
+    "vendors~main.js.map": "/jotai-tic-tac-toe-demo/static/js/vendors~main.26bfa29b.chunk.js.map",
     "index.html": "/jotai-tic-tac-toe-demo/index.html"
   },
   "entrypoints": [
     "static/js/runtime-main.0c7472b0.js",
-    "static/js/vendors~main.3966ea1c.chunk.js",
+    "static/js/vendors~main.26bfa29b.chunk.js",
     "static/css/main.b197d3c0.chunk.css",
     "static/js/main.800a6e59.chunk.js"
   ]
